@@ -5,6 +5,7 @@ import com.jim.katunguka.reactiverestwebflux.service.WidgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -28,8 +29,8 @@ public class CustomerController {
         return  customerFlux;
     }
 
-    @GetMapping("widgetDesc")
-    public  String getString(){
-        return widgetService.getDescription();
+    @GetMapping("/widgetDesc/{num}")
+    public  String getString(@PathVariable int num){
+        return widgetService.getDescription(num);
     }
 }
